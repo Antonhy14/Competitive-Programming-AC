@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+#define ull unsigned long long
+#define ll long long
+#define nl cout<< "\n"
+#define sp(x,n) fixed << setprecision(x) << n
+#define all(x) x.begin(),x.end()
+using namespace std;
+int main() {
+	cin.tie(0);
+	ios_base::sync_with_stdio(0);
+	string frase;
+	vector<string> frases;
+	char space = 32;
+	while(getline(cin,frase,space)){
+		reverse(all(frase));
+		frases.push_back(frase);
+	}
+	for(string fr:frases) {
+		cout << fr << " ";
+	}
+}
