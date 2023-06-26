@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ull unsigned long long
+#define ll long long
+#define nl cout<<"\n"
+#define sp(x,n) fixed<<setprecision(x) << n
+#define all(x) x.begin(),x.end()
+int main(){
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	// vector<tipo_de_dato> id;
+	// vector<tipo_de_dato> id(cantidad_de_valores ,valor o {valores};
+	// Funciones de vector
+	/* 
+		nombre_vector.funcion();
+		push_back(n): agregar elemento al final.
+		pop_back(): eliminar el ultimo elemento.
+		front(): devuelve el primer elemento. O modificarlo.
+		back(): devuelve el ultimo elemento. O modificarlo.
+		empty(): devuelve si esta vacio.
+		erase(v.begin()+i): borrar un elemento.
+		erase(v.begin()+i,v.end()-i): borrar un conjuto de elementos. -| rango de ejemplo puede ser otro. |-
+		sort(v.begin(),v.end()): ordena un vector de manera.
+		insert(v.begin(), n): agrega un elemento o elementos en una posicion. -| los demas que ya existian lo recorre |-
+		size(): devuelve la cantidad de elementos.
+		
+	*/
+	return 0;
+}
