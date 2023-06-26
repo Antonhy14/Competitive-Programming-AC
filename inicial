@@ -5,8 +5,10 @@ using namespace std;
 #define ll long long
 #define nl cout<<"\n"
 #define sp(x,n) fixed<<setprecision(x) << n
+#define all(x) x.begin(),x.end()
 int main(){
   ios_base::sync_with_stdio(0);
   cin.tie(0);
   
+  return 0;
 }
