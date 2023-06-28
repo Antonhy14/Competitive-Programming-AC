@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ull unsigned long long
+#define ll long long
+#define nl cout<<"\n"
+#define sp(x,n) fixed<<setprecision(x) << n
+#define all(x) x.begin(),x.end()
+struct persona{
+	int dinero,edad;
+	string nombre;
+   	void mostrar() {
+	   cout << nombre << " tiene " << edad << " de edad y pesa " << dinero << " pesos.\n";
+   	}
+};
+bool ordenarPersona(persona a, persona b) {
+  	if(a.dinero!=b.dinero) return a.dinero>b.dinero;
+  	if(a.edad!=b.edad) return a.dinero<b.dinero;
+  	return a.nombre<b.nombre;
+}
+int main(){
+  ios_base::sync_with_stdio(0);
+  cin.tie(0);
+  vector<persona> p;
+  int n=5;
+  for(int i=0;i<n;i++) {
+  	persona aux;
+  	cin >> aux.nombre >> aux.edad >> aux.dinero;
+ 	p.push_back(aux);
+  }
+   sort(all(p),ordenarPersona);
+  for(int i=0;i<n;i++) p[i].mostrar();
+  return 0;
+}
