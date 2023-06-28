@@ -5,6 +5,9 @@ using namespace std;
 #define nl cout<<"\n"
 #define sp(x,n) fixed<<setprecision(x) << n
 #define all(x) x.begin(),x.end()
+bool orden(int a, int b) {
+  	return a>b;
+}
 int main(){
   ios_base::sync_with_stdio(0);
   cin.tie(0);
@@ -12,7 +15,26 @@ int main(){
   /*
   	  sort es el ordenamiento de datos.
   	  sort(rango): de menor a mayor
-  	  sort(rango,): mayor a menor
+  	  Ordenar un arreglo
+  	  int arr[10];
+  	  sort(arr,arr+10);
+  	  Orden personalizado
+  	  sort(rango,orden): orden sera el metodo de ordenamiento que se usara, y sera una funcion booleana.
+  	  
+  	  Ejemplo de mayor a menor.
+  	  sort(rango,orden);
+  	  **Fuera del main
+  	  	bool orden(int a, int b) {
+  	  		return a>b;
+	  	}
+	  
+	  En cada iteracion del elemento pregunta si la condicion dada se cumple, al mandar a llamar a la funcion.	
+	  Se puede ordenar cualquier estructura de datos.
+  	  
   */
+  
+  vector<int> v = {2,1,5,3,9,7,20};
+  sort(all(v),orden);
+  for(auto x:v) cout << x << " ";
   return 0;
 }
