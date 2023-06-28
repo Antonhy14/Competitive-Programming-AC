@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+#define ull unsigned long long
+#define ll long long
+#define nl cout<< "\n"
+#define sp(x,n) fixed << setprecision(x) << n
+#define all(x) x.begin(),x.end()
+using namespace std;
+int main() {
+	cin.tie(0);
+	ios_base::sync_with_stdio(0);
+	// Queue | Deque | Stack
+	/*
+		Queue: el primero en entrar el primero en salir
+		Los elementos se agregan al final y se eliminan al frente.
+		
+		Stack: el ultimo en entrar en primero en salir
+		Los elementos se agregan al final y se eliminan al final.
+		
+		Deque: 
+		Los elementos se pueden agregarse o eliminarse al principio o al final.
+		
+		
+		Funciones.
+		push(n): agrega elementos.
+		pop(): elimina elementos.
+		size(): cantidad de elementos.
+		front(): muestra el frente.
+		back(): muestra el final.
+		empty(): dice si esta vacio la queue.
+		
+	*/
+	return 0;
+}
