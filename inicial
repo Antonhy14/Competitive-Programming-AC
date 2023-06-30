@@ -6,6 +6,7 @@ using namespace std;
 #define nl cout<<"\n"
 #define sp(x,n) fixed<<setprecision(x) << n
 #define all(x) x.begin(),x.end()
+#define fore(i,l,r) for(int i=l;i<r;i++)
 int main(){
   ios_base::sync_with_stdio(0);
   cin.tie(0);
