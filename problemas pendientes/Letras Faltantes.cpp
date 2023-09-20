@@ -22,16 +22,28 @@ int main(){
     while(cin >> l1 >> l2) {
         string str,str2;
         cin >> str >> str2;
-        sort(all(str));
-        sort(all(str2));
-        auto it = str2.find(str);
+        string aux=str,aux2=str2;
+        sort(all(aux));
+        sort(all(aux2));
+        auto it = aux2.find(aux);
         if(it==string::npos) cout << "no entiendo\n";
         else {
-            str2.erase(it,str.length());
+            fore(i,0,str2.length()) {
+                if(str.empty()) break;
+                fore(j,0,str.length()) {
+                    if(str2[i]==str[j]) {
+                        str.erase(str.begin()+j);
+                        str2.erase(str2.begin()+i);
+                        i--;
+                    }
+                    else break;
+                }
+            }
             cout << str2 << endl;
         }
     }
     
     return 0;
 }
-//https://omegaup.com/arena/problem/LetrasFaltantes/
+// WA 0
+// https://omegaup.com/arena/problem/LetrasFaltantes/
