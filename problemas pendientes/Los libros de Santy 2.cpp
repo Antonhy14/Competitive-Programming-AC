@@ -1,7 +1,8 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<algorithm>
 using namespace std;
 #define ull unsigned long long
-#define ll long long
+#define ll long long int
 #define nl cout<<"\n"
 #define sp(x,n) fixed<<setprecision(x) << n
 #define all(x) x.begin(),x.end()
@@ -14,8 +15,8 @@ using namespace std;
     'a' = 97 'z' = 122
     '0' = 48 '9' = 57
 */
-ull binarySearch(ull x, vector<ull>& v) {
-	int l=0,r=v.size()-1,guess;
+ull binarySearch(ll x, ll (&v)[], int size) {
+	int l=0,r=size-1,guess;
 	while(0==0) {
 		guess= (l+r)/2;
 		
@@ -30,21 +31,17 @@ int main(){
     
     int n,q;
 	cin >> n >> q;
-	vector<ull> nums;
+	ll nums[n];
 	
-	fore(i,0,n) {
-		ull aux;
-		cin >> aux;
-		nums.push_back(aux);
-	}
-	sort(all(nums));
+	fore(i,0,n)	cin >> nums[i];
+	
+	sort(nums,nums+n); 
 	
 	fore(i,0,q) {
-		int aux;
+		ll aux;
 		cin >> aux;
-		ull res = binarySearch(aux,nums);
+		ll res = binarySearch(aux,nums,n);
 		cout << res << " ";
-		
 	}
     
     return 0;
