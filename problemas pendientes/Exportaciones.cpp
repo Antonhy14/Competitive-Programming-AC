@@ -15,46 +15,53 @@ using namespace std;
     'a' = 97 'z' = 122
     '0' = 48 '9' = 57
 */
-void dfs(vector<vector<vector<int>>>& grafo, int node, int dest, vector<bool>& visited, stack<int>& path) {
-	visited[node] = true;
+void dfs(vector<vector<vector<int>>>& grafo, int node, int dest, vector<bool>& visited, stack<int>& path, vector<stack<int>>& paths) {
+	visited[node]=true;
 	path.push(node);
-	if(node==dest) return;
+    if(node==dest) {
+        paths.pb(path);
+        visited[node]=false;
+        path.pop();
+    }
 	
-	fore(i,1,grafo[node].size()+1) {
+	fore(i,1,grafo[node].size()) {
 		if(grafo[node][i].empty()) continue;
 		if(!visited[i]) {
-			dfs(grafo,i,dest,visited,path);
+			dfs(grafo,i,dest,visited,path,paths);
 		}
 	}
 	path.pop();
 }
 vector<int> analizePath(vector<vector<vector<int>>>& grafo, int node, int dest) {
-	map<int,int> x;
 	vector<int> res;
 	
 	
 	stack<int> path;
-	vector<bool> visited(grafo[node].size()+1);
-	cout << "." << visited.size() << endl;
-//	dfs(grafo,node,dest,visited,path);
-	
-	int c=0;
-	while(!path.empty()) {
-		int aux = path.top();
-		cout << aux << endl;
-		path.pop();
-		fore(i,1,grafo[aux].size()+1) {
-			if(grafo[aux][i].empty()) continue;
-			for(auto prod: grafo[aux][i]) {
-				if(x.find(prod)==x.end()) x[prod]=1;
-				else x[prod]++;
-			}
-		}
-		c++;
-	}
-	for(auto cont:x) {
-		if(cont.second==c) res.pb(cont.first);
-	}
+	vector<stack<int>> paths;
+	vector<bool> visited(grafo[node].size());
+	dfs(grafo,node,dest,visited,path,paths);
+
+    for(auto& pth: paths) {   
+	    map<int,int> x;
+    	int c=0;
+    	while(!pth.empty()) {
+    		int aux = pth.top();
+    		pth.pop();
+    		
+    		if(pth.empty()) break;
+    		else {
+    		    for(auto prod:grafo[aux][pth.top()]) {
+    				if(x.find(prod)==x.end()) x[prod]=1;
+    				else x[prod]++;
+    		    }
+    		}
+    		c++;
+    	}
+        for(auto cont:x) {
+    		if(cont.second==c) res.pb(cont.first);
+    	}
+    }
+
 	return res;
 }
 int main() {
