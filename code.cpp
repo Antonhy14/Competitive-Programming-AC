@@ -16,11 +16,9 @@ using namespace std;
     '0' = 48 '9' = 57
 */
 int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
+    cin.tie(0) -> sync_with_stdio(0), cout.tie(0);
 
-    
+	
 
     cout << '\n';
     
