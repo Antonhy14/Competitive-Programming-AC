@@ -7,10 +7,13 @@ using namespace std;
 #define sp(x,n) fixed << setprecision(x) << n
 #define all(x) x.begin(),x.end()
 #define sz(x) int(x.size())
+#define len(x) int(x.length())
 #define fore(i,l,r) for(auto i=l;i<r;i++)
 #define pb push_back
 #define pf push_front
 #define lsb(x) (x & -x)
+
+using vi = vector<int>;
 /*
     Valores ASCII
     'A' = 65 'Z' = 90
