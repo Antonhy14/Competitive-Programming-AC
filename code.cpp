@@ -1,3 +1,4 @@
+// AC = AntonhyCoder
 #include <bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
@@ -14,6 +15,8 @@ using namespace std;
 #define lsb(x) (x & -x)
 
 using vi = vector<int>;
+using vii = vector<pair<int, int>>;
+using ii = pair<int, int>;
 /*
     Valores ASCII
     'A' = 65 'Z' = 90
@@ -27,7 +30,7 @@ int main(){
     cin.tie(0) -> sync_with_stdio(0), cout.tie(0);
 
     
-
+    
     cout << '\n';
     
     return 0;
