@@ -4,16 +4,15 @@ struct Graph{
     struct Edge{
         int src; // de donde
         int dest; // a donde
-        int weight; // peso
+        ll weight; // peso
     };
 
-    vector<Edge> edges; // todas la conexiones
-    vi pr, lenST; // padres y la longitud de los subarboles
     int V; // cantidad de nodos del grafo
+    vector<Edge> edges; // todas las conexiones
+    vi pr, frds; // padres y la cantidad de amigos que hay en cada grupo
 
-    // v es la cantidad de nodos que hay en el grafo
-    Graph(int v): V(v), pr(v), lenST(v, 1) {
-        iota(all(pr), 0); // cada quien es su propio padre en un unicio
+    Graph(int v): V(v), pr(v), frds(v, 1) {
+        iota(all(pr), 0); // cada quien es su propio padre en un unicio y tiene un solo amigo
     }
     // funcion para agregar las aristas que usaremos para unir el arbol
     void addEdge(int src, int dest, int weight) {
@@ -21,41 +20,36 @@ struct Graph{
     }
     // funcion para saber quien es padre de quien
     int find(int u) {
-        if(pr[u]!=u) {
-            pr[u] = find(pr[u]);
-        }
-        return pr[u];
+        return pr[u] == u ? u: pr[u] = find(pr[u]);
     }
     // funcion para unir
     void unite(int u, int v) {
-        u = find(u), v = find(v); // unimos por padres(subarboles)
-        
-        if(u!=v) {
-            // el subarbol mas pequeño se une al arbol mas grande, ayuda en operaciones futuras
-            if(lenST[u] < lenST[v]) 
-                swap(u, v);
-            // unimos subarboles
-            lenST[u]+= lenST[v];
-            pr[v] = u;
-        }
+        // el subarbol mas pequeño se une al arbol mas grande
+        if(frds[u] < frds[v])
+            swap(u, v);
+        // hacemos amigos
+        frds[u]+= frds[v];
+        pr[v] = pr[u];
     }
     // se toman las mejores aristas para hacer el arbol
     void MST() {
-        vector<Edge> result; // se guarda las aristas tomadas
+        vector<Edge> res; // se guarda las aristas tomadas
         // se hace orden por peso
-        sort(all(edges), [&] (Edge a, Edge b) {
+        sort(all(edges), [&] (const Edge& a, const Edge& b) {
             return a.weight < b.weight;
         });
-
         // vemos las aristas
         for(auto& edge: edges) {
-            int u = find(edge.src); 
+            int u = find(edge.src);
             int v = find(edge.dest);
-            // si no son parte del mismo subarbole
+            // si no son parte del mismo grupo
             if(u!=v) {
-                unite(u, v); // se unen
+                res.pb(edge);
+                unite(u, v); // se hacen amigos
             }
         }
+        // Vemos las conexiones que tomamos
+        for(auto& edge: res)
+            cout << edge.src << " -> " << edge.dest << ": " << edge.weight << nl;
     }
 };
-// *nota: se puede modificar el orden para unir por las conexiones mas caras.
