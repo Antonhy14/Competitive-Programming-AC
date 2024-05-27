@@ -20,7 +20,10 @@ struct Graph{
     }
     // funcion para saber quien es padre de quien
     int find(int u) {
-        return pr[u] == u ? u: pr[u] = find(pr[u]);
+        if(pr[u]!=u) 
+            pr[u] = find(pr[u]);
+
+        return pr[u];
     }
     // funcion para unir
     void unite(int u, int v) {
