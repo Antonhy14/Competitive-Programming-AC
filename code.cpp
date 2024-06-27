@@ -15,6 +15,7 @@ using namespace std;
 #define lsb(x) (x & -x)
 
 using vi = vector<int>;
+using vll = vector<ll>;
 using vii = vector<pair<int, int>>;
 using ii = pair<int, int>;
 /*
