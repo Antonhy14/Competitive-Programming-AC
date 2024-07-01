@@ -41,7 +41,7 @@ struct SegmTree{
         }
     }
 
-    // consultan en rango
+    // consultas en rango
     ll query(int x, int y) {
         if(r <  x || y < l) return 0; // si no forma para de la query, regreso un valor invalido o que no afecte al resultado
         if(x<=l && r<=y) return sum; // si este segmento abarca toda la consulta, regreso lo que tenga almacenado
