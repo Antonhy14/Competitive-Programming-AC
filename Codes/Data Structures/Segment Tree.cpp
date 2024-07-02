@@ -35,7 +35,7 @@ struct SegmTree{
             int m = (l + r) / 2;
             // veo en donde esta, y sigo buscando hasta encontrarlo
             if (i <= m) left->update(i, x);
-            else if(i >= m) right->update(i, x);
+            else right->update(i, x);
             // mientras voy regresando, modifico los segmentos que dependen del nodo que quiero modificar
             pull();
         }
