@@ -1,23 +1,25 @@
+int arr[N];
+
 struct SegmTree {
     int n;
     vi tree;
 
     SegmTree(int size): tree(4*size), n(size) {}
 
-    void build(const vi &v, int idx, int l, int r) {
-        if (l == r) tree[idx] = v[l];
+    void build(int idx, int l, int r) {
+        if (l == r) tree[idx] = arr[l];
         else {
             int m = (l + r) / 2;
 
-            build(v, 2 * idx, l, m);
-            build(v, 2 * idx + 1, m + 1, r);
+            build(2 * idx, l, m);
+            build(2 * idx + 1, m + 1, r);
 
             tree[idx] = max(tree[2 * idx], tree[2 * idx + 1]);
         }
     }
 
-    void build(const vi &v) {
-        build(v, 1, 1, sz(v));
+    void build() {
+        build(1, 1, n);
     }
 
     void update(int i, int x, int idx, int l, int r) {
