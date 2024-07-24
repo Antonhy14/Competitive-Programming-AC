@@ -1,20 +1,20 @@
 int arr[N];
 
-struct SegmTree {
+struct SegmTree{
     int n;
     vi tree;
 
-    SegmTree(int size): tree(4*size), n(size) {}
+    SegmTree(int size): tree(4 * size), n(size) {}
 
-    void build(int idx, int l, int r) {
-        if (l == r) tree[idx] = arr[l];
+    void build(int node, int l, int r) {
+        if(l==r) tree[node] = arr[l];
         else {
-            int m = (l + r) / 2;
+            int m = (l+r) / 2;
 
-            build(2 * idx, l, m);
-            build(2 * idx + 1, m + 1, r);
+            build(2 * node, l, m);
+            build(2 * node + 1, m+1, r);
 
-            tree[idx] = max(tree[2 * idx], tree[2 * idx + 1]);
+            tree[node] = tree[2 * node] + tree[2 * node + 1];
         }
     }
 
@@ -22,35 +22,33 @@ struct SegmTree {
         build(1, 1, n);
     }
 
-    void update(int i, int x, int idx, int l, int r) {
-        if (l == r) tree[idx] = x;
+    int query(int l, int r, int node, int s, int e) {
+        if(r < s || e < l) return 0;
+        if(l <= s && e <= r) return tree[node];
+
+        int m = (s+e) / 2;
+
+        int left = query(l, r, 2 * node, s, m);
+        int right = query(l, r, 2 * node + 1, m+1, e);
+
+        return left + right;
+    }
+
+    int query(int l, int r) {
+        return query(l, r, 1, 1, n);
+    }
+
+    void update(int i, int delta, int node, int s, int e) {
+        if(s == e) tree[node] = arr[i] = delta;
         else {
-            int m = (l + r) / 2;
+            int m = (s + e) / 2;
 
-            if (i <= m) update(i, x, 2 * idx, l, m);
-            else update(i, x, 2 * idx + 1, m + 1, r);
-
-            tree[idx] = max(tree[2 * idx], tree[2 * idx + 1]);
+            if(i <= m) update(i, delta, 2 * node, s, m);
+            else update(i, delta, 2 * node + 1, m+1, e);
         }
     }
 
-    void update(int i, int x) {
-        update(i, x, 1, 1, n);
-    }
-
-    int query(int x, int y, int idx, int l, int r) {
-        if (r < x || y < l) return -INF;
-        if (x <= l && r <= y) return tree[idx];
-
-        int m = (l + r) / 2;
-
-        int left = query(x, y, 2 * idx, l, m);
-        int right = query(x, y, 2 * idx + 1, m + 1, r);
-
-        return max(left, right);
-    }
-
-    int query(int x, int y) {
-        return query(x, y, 1, 1, n);
+    void update(int i, int delta) {
+        update(i, delta, 1, 1, n);
     }
 };
