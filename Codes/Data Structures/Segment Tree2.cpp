@@ -45,6 +45,8 @@ struct SegmTree{
 
             if(i <= m) update(i, delta, 2 * node, s, m);
             else update(i, delta, 2 * node + 1, m+1, e);
+
+            tree[node] = tree[2 * node] + tree[2 * node + 1];
         }
     }
 
