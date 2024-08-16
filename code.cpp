@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
-#define ll long long int
+#define lli long long int
 #define cnl cout << '\n'
 #define nl '\n'
 #define sp(x,n) fixed << setprecision(x) << n
@@ -15,7 +15,7 @@ using namespace std;
 #define lsb(x) (x & -x)
 
 using vi = vector<int>;
-using vll = vector<ll>;
+using vll = vector<lli>;
 using vii = vector<pair<int, int>>;
 using ii = pair<int, int>;
 /*
@@ -24,15 +24,12 @@ using ii = pair<int, int>;
     'a' = 97 'z' = 122
     '0' = 48 '9' = 57
 */
-// 1LL *: convierte el siguiente numero a long long int
 const int N = 1e5 + 5;
 
-int main(){
+int main() {
     cin.tie(0) -> sync_with_stdio(0), cout.tie(0);
 
-    
-    
-    cout << '\n';
-    
+ 	
+
     return 0;
 }
