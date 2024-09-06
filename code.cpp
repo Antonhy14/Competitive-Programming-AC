@@ -18,12 +18,7 @@ using vi = vector<int>;
 using vll = vector<lli>;
 using vii = vector<pair<int, int>>;
 using ii = pair<int, int>;
-/*
-    Valores ASCII
-    'A' = 65 'Z' = 90
-    'a' = 97 'z' = 122
-    '0' = 48 '9' = 57
-*/
+
 const int N = 1e5 + 5;
 
 int main() {
