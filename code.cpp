@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
-#define lli long long int
+#define ll long long int
 #define cnl cout << '\n'
 #define nl '\n'
 #define sp(x,n) fixed << setprecision(x) << n
